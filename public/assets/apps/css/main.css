@@ -1,0 +1,53 @@
+html {
+    overflow: auto;
+}
+
+body {
+    overflow: hidden;
+}
+
+.app-bg-primary {
+    background-color: #66EBB4;
+}
+
+.app-text-primary {
+    color: #1D266C;
+}
+
+.text-primary {
+    color: #5400FF;
+}
+
+.app-subtitle-box {
+    height: 250px;
+    /* background-color: #5CAA45; */
+    /* clip-path: url(#wave); */
+}
+
+.header {
+    background-color: #31B0D1;
+    border-radius: 100px;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, .1);
+}
+
+.back {
+    background-color: #5CAA45;
+    border-radius: 100px;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, .1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.answer .card {
+    border-radius: 100px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .left-side {
+        position: fixed;
+        height: 100%;
+    }
+    .right-side {
+        margin-left: 32.5%;
+    }
+}
