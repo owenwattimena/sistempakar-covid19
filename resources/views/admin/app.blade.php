@@ -96,6 +96,15 @@ $current_route = Route::currentRouteName();
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href=" {{route('tentang')}} "
+                                class="nav-link {{$current_route == 'tentang' ? 'active' : ''}}">
+                                <i class="nav-icon fas fa-info-circle"></i>
+                                <p>
+                                    Tentang
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href=" {{ route('gejala') }} "
                                 class="nav-link {{$current_route == 'gejala' ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-virus"></i>

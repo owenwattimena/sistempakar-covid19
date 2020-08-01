@@ -29,14 +29,36 @@ Route::get('/', function () {
     return view('apps/pages/main');
 });
 
+Route::get('/tentang', 'TentangController@index');
 Route::get('/diagnosa', 'DiagnosaController@index')->name('diagnosa');
-Route::get('/diagnosa/all', 'DiagnosaController@get')->name('diagnosa_all');
+Route::get('/diagnosa/all', 'DiagnosaController@get')->name('diagnosa_all'); //return JSON
 
+
+/**
+ * ------------------------------------------------------------------------
+ * Route for Admin
+ * ------------------------------------------------------------------------
+ *  - / (dashboard)
+ *  - tentang
+ *  - gejala
+ */
 Route::group([ 'middleware' => ['auth']], function(){
+    
     Route::get('/logout', 'Auth\AuthController@logout')->name('logout');
-    Route::get('/admin', 'Admin\DashboardController@index')->name('dashboard');
-    Route::get('/admin/gejala', 'Admin\GejalaController@index')->name('gejala');
-    Route::post('/admin/gejala', 'Admin\GejalaController@create')->name('create_gejala');
-    Route::put('/admin/gejala/ubah/{id}', 'Admin\GejalaController@update');
-    Route::delete('/admin/gejala/hapus/{id}', 'Admin\GejalaController@destroy')->name('destroy_gejala');
+
+    Route::group(['prefix' => 'admin'], function () {
+        
+        Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
+
+        Route::get('/tentang', 'Admin\TentangController@index')->name('tentang');
+        Route::put('/tentang', 'Admin\TentangController@update')->name('update_tentang');
+
+        Route::group(['prefix' => 'gejala'], function () { 
+            Route::get('/', 'Admin\GejalaController@index')->name('gejala');
+            Route::post('/', 'Admin\GejalaController@create')->name('create_gejala');
+            Route::put('/ubah/{id}', 'Admin\GejalaController@update');
+            Route::delete('/hapus/{id}', 'Admin\GejalaController@destroy')->name('destroy_gejala');
+        });
+    });
 });
+/**--------------------------------------------------------------------- */
