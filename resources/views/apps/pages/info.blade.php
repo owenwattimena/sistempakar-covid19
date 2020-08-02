@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-nav-bar title="Tentang Covid-19"></x-nav-bar>
+<x-nav-bar title="{{$title}}"></x-nav-bar>
 
 <div class="container content mt-5">
     {{-- QUESTION --}}
@@ -10,7 +10,7 @@
         <div class="col-md-11">
             <div class="card mb-4 bg-white border-0">
                 <div class="card-body text-left py-3">
-                    {!!$tentang->body!!}
+                    {!!$info->body!!}
                 </div>
             </div>
         </div>

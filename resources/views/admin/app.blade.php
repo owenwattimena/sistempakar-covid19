@@ -96,14 +96,23 @@ $current_route = Route::currentRouteName();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href=" {{route('tentang')}} "
-                                class="nav-link {{$current_route == 'tentang' ? 'active' : ''}}">
+                            <a href=" {{route('info')}} "
+                                class="nav-link {{$current_route == 'info' ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-info-circle"></i>
                                 <p>
-                                    Tentang
+                                    Info
                                 </p>
                             </a>
                         </li>
+                        {{-- <li class="nav-item">
+                            <a href=" {{route('pencegahan')}} "
+                                class="nav-link {{$current_route == 'pencegahan' ? 'active' : ''}}">
+                                <i class="nav-icon fas fa-ban"></i>
+                                <p>
+                                    Pencegahan
+                                </p>
+                            </a>
+                        </li> --}}
                         <li class="nav-item">
                             <a href=" {{ route('gejala') }} "
                                 class="nav-link {{$current_route == 'gejala' ? 'active' : ''}}">
@@ -116,9 +125,9 @@ $current_route = Route::currentRouteName();
                         <li class="nav-item">
                             <a href=" {{url('admin')}} "
                                 class="nav-link {{$current_route == 'diagnosa' ? 'active' : ''}}">
-                                <i class="nav-icon fas fa-list-alt"></i>
+                                <i class="nav-icon fas fa-code"></i>
                                 <p>
-                                    Hasil Diagnosa
+                                    Tentang Developer
                                 </p>
                             </a>
                         </li>

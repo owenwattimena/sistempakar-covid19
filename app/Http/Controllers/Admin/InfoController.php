@@ -5,18 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Info;
-class TentangController extends Controller
+class InfoController extends Controller
 {
     //
     public function index(){
-        $data['tentang'] = Info::where('info', 'TENTANG')->first(); 
-        return view('admin.pages.tentang', $data);
+        $data['info'] = Info::all(); 
+        return view('admin.pages.info', $data);
+    }
+    
+    public function edit($info){
+        $data['info'] = Info::where('info', strtoupper($info))->first(); 
+        return view('admin.pages.info_edit', $data);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $info){
         if ($request) {
-            $tentang = Info::where('info','TENTANG')->first();
-            $tentang->body = $request->tentang;
+            $tentang = Info::where('info',strtoupper($info))->first();
+            $tentang->body = $request->body;
             if ($tentang->save()) {
                 $alert = [
                     "type" => "alert-success",
@@ -29,6 +34,6 @@ class TentangController extends Controller
                 ];
             }
         }
-        return redirect()->route('tentang')->with($alert);
+        return redirect()->route('edit_info',['info' => strtolower($info)])->with($alert);
     }
 }

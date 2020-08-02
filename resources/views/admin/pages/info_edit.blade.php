@@ -1,11 +1,11 @@
-@php
-    // dd($tentang);
-@endphp
+
 @extends('admin.app')
 @section('style')
     <link rel="stylesheet" href="{{asset('assets/admin/plugins/summernote/summernote-bs4.css')}}">
 @endsection
-@section('page', 'Tentang Covid-19')
+@section('page')
+{!!ucfirst(strtolower($info->info))!!}
+@endsection
 @section('main')
 
 @if (session('msg'))
@@ -17,15 +17,15 @@
 </div>
 @endif
 
-<form method="POST" action="{{route('update_tentang')}}">
+<form method="POST" action="{{route('update_info', ['info' => $info->info] )}}">
     @csrf
     @method('put')
     <div class="text-right">
         <button class="btn btn-info rounded-0 mb-3">SIMPAN</button>
     </div>
-    <textarea class="textarea" name="tentang" placeholder="Place some text here"
+    <textarea class="textarea" name="body" placeholder="Place some text here"
     style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-        {{$tentang->body}}
+        {{$info->body}}
     </textarea>
 </form>
     <p class="text-sm mb-0">
